@@ -1,0 +1,180 @@
+/* General  */
+:root {
+  --primary: #e8c5ef;
+  --secondary: #6b1a7a;
+  --tertiary: #a91abf;
+  --light: #ffffff;
+}
+
+* {
+  font-family: Arial;
+  margin: 0%;
+}
+
+
+nav {
+  background-color: var(--tertiary);
+  margin: 0%;
+  padding: 10px;
+}
+
+nav a {
+  color: var(--light);
+  padding: 14px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav a:hover {
+  color: var(--secondary);
+  background-color: var(--primary);
+}
+
+header {
+  padding: 10px;
+  text-align: center;
+  background: var(--primary);
+  color: var(--light);
+}
+
+
+.main {
+ 
+  background-color: #fff;
+  font-family: Arial;
+  width: 100%;
+  
+  align-items: center;
+}
+
+
+.card {
+  margin: 20px;
+  border: 2px solid var(--primary);
+  background-color: var(--light);
+  color: var(--primary);
+  position: relative;
+}
+
+.card-title {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 5px;
+}
+
+.card-comment-title {
+  background-color: var(--tertiary);
+  color: var(--light);
+  padding: 5px;
+}
+
+.card-content {
+  color: var(--primary);
+  padding: 5px;
+}
+
+.card-info {
+  text-align: right;
+  color: var(--tertiary);
+  padding: 5px;
+}
+
+.card a {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+
+.add-comment {
+  margin: 20px;
+  text-align: center;
+  border: solid black;
+  background-color: var(--tertiary);
+}
+
+.add-comment-title {
+  margin: 5px;
+  color: var(--light);
+}
+
+#content-newcomment, #title-newpost, #content-newpost, #title-updatepost, #content-updatepost {
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+}
+
+.btn-submit {
+  margin: 5px;
+  font-size: 15px;
+}
+
+.new-post-btn-section {
+  text-align: center;
+}
+
+.btn-new-post {
+  background-color: var(--primary);
+  padding: 10px;
+  font-size: 20px;
+}
+
+.btn-new-post a {
+  color: white;
+  text-decoration: none;
+}
+
+.new-post {
+  margin: 20px;
+  text-align: center;
+  border: solid black;
+  background-color: var(--primary);
+  color: var(--light)
+}
+
+.form-group {
+  margin: 10px;
+}
+
+.login-signup {
+  margin: 20px;
+  text-align: center;
+  border: solid black;
+  background-color: rgb(122, 4, 148);
+  color: var(--light)
+}
+
+#username-login, #password-login, #username-signup, #password-signup {
+  width: 30%;
+  padding: 2px;
+  margin: 5px;
+}
+
+.login-signup a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Logout button */
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--light);
+  font-size: 20px;
+  transition: color 0.1s;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logout-btn:hover {
+  color: var(--secondary);
+  background-color: var(--primary);
+}
