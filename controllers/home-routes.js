@@ -12,6 +12,10 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/quiz', (req, res) => {
+  res.render('quiz', { loggedIn: req.session.loggedIn });
+});
+
 router.get('/signup', (req, res) => {
   res.render('signup', { loggedIn: req.session.loggedIn });
 });
