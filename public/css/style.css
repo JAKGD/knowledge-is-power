@@ -45,8 +45,9 @@ header {
   background-color: #fff;
   font-family: Arial;
   width: 100%;
-  
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -145,11 +146,13 @@ header {
   text-align: center;
   border: solid black;
   background-color: rgb(122, 4, 148);
-  color: var(--light)
+  color: var(--light);
+  width:600px;
+
 }
 
 #username-login, #password-login, #username-signup, #password-signup {
-  width: 30%;
+  width: 50%;
   padding: 2px;
   margin: 5px;
 }
@@ -177,4 +180,13 @@ header {
 .logout-btn:hover {
   color: var(--secondary);
   background-color: var(--primary);
+}
+.begin-quiz-btn {
+color: white;
+height: 50px;
+width: 300px;
+margin:200px auto;
+
+
+
 }
