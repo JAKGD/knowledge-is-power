@@ -21,7 +21,11 @@ Answer.init(
         allowNull: false,    
     },
     answer_key: {
-        primaryKey: true
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+
+
 
     }, 
     
