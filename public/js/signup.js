@@ -1,3 +1,4 @@
+//--Adding sign up event--//
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
