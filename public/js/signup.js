@@ -1,4 +1,5 @@
 //--Adding sign up event--//
+//--Adding a POST method--//
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
