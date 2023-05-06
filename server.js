@@ -30,6 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add middleware to set MIME type for signup.js file (results in 404 error)
+// app.use('/js/signup.js', (req, res, next) => {
+//   res.type('text/javascript');
+//   next();
+// });
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
