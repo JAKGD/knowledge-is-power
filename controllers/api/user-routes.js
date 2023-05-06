@@ -3,6 +3,7 @@ const { User } = require('../../models');
 
 
 router.post('/login', async (req, res) => {
+  console.log(req.body, "request")
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -13,11 +14,19 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'Incorrect username. Please try again!' });
       return;
     }
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-    if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password. Please try again!' });
-      return;
+    else {
+      console.log("correctusername")
     }
+
+    // Uncomment when we can add users via Signup
+    // const validPassword = await dbUserData.checkPassword(req.body.password);
+    // if (!validPassword) {
+    //   res.status(400).json({ message: 'Incorrect password. Please try again!' });
+    //   return;
+    // }
+    // else {
+    //   console.log("validpassword")
+    // }
     const userId = dbUserData.get({ plain: true }).id;
     req.session.save(() => {
       req.session.loggedIn = true; 

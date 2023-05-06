@@ -1,4 +1,3 @@
-// There doesn't appear to be an issue here, though there's more handlers in login.js?
 const signupForm = document.querySelector('#signup-form');
 
 signupForm.addEventListener('submit', async (event) => {

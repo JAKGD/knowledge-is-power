@@ -1,7 +1,6 @@
 
 const router = require('express').Router();
-const { User, Question, Answer } = require('../models');
-const withAuth = require('../utils/auth'); 
+// const withAuth = require('../utils/auth'); 
 
 router.get('/', async (req, res) => {
   try {
@@ -10,6 +9,10 @@ router.get('/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get('/quiz', (req, res) => {
+  res.render('quiz', { loggedIn: req.session.loggedIn });
 });
 
 router.get('/signup', (req, res) => {
