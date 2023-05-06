@@ -1,9 +1,22 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.post('/signup', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.user_id = userData.id;
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 router.post('/login', async (req, res) => {
-  console.log(req.body, "request")
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -14,23 +27,17 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'Incorrect username. Please try again!' });
       return;
     }
-    else {
-      console.log("correctusername")
+
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password. Please try again!' });
+      return;
     }
 
-    // Uncomment when we can add users via Signup
-    // const validPassword = await dbUserData.checkPassword(req.body.password);
-    // if (!validPassword) {
-    //   res.status(400).json({ message: 'Incorrect password. Please try again!' });
-    //   return;
-    // }
-    // else {
-    //   console.log("validpassword")
-    // }
     const userId = dbUserData.get({ plain: true }).id;
     req.session.save(() => {
-      req.session.loggedIn = true; 
-      req.session.user_id = userId; 
+      req.session.loggedIn = true;
+      req.session.user_id = userId;
       res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
@@ -46,23 +53,6 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
-  }
-});
-
-router.post('/signup', async (req, res) => {
-  try {
-    const newUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-    });
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.user_id = newUser.id;
-      res.status(200).json({ user: newUser, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
   }
 });
 
