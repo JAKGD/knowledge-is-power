@@ -43,50 +43,56 @@ WHEN I answer the last question
 THEN I am shown a scoreboard displaying my final score, my high score, and the high scores of other players
 ```
 
-## Preliminary Directory Structure
+## Directory Structure
+
 
 ```
-Preliminary File Structure
+knowledge-is-power
 ├─ .env
 ├─ .gitignore
 ├─ config
 │  └─ connection.js
 ├─ controllers
 │  ├─ api
+│  │  ├─ answer-routes.js
 │  │  ├─ index.js
-│  │  ├─ questionRoutes.js
-│  │  └─ userRoutes.js
-│  ├─ homeRoutes.js
+│  │  ├─ question-routes.js
+│  │  └─ user-routes.js
+│  ├─ home-routes.js
 │  └─ index.js
 ├─ db
 │  └─ schema.sql
+├─ LICENSE
 ├─ models
+│  ├─ Answer.js
 │  ├─ index.js
 │  ├─ Question.js
 │  └─ User.js
-├─ node-modules
+├─ node_modules
 ├─ package-lock.json
 ├─ package.json
 ├─ public
 │  ├─ css
-│  │  └─ jass.css
+│  │  └─ style.css
 │  └─ js
 │     ├─ login.js
-│     └─ logout.js
+│     ├─ logout.js
+│     └─ start.js
 ├─ README.md
 ├─ seeds
-│  ├─ questionData.json
-│  ├─ seed.js
-│  └─ userData.json
+│  ├─ answerData.js
+│  ├─ index.js
+│  ├─ questionData.js
+│  └─ userData.js
 ├─ server.js
 ├─ utils
 │  ├─ auth.js
 │  └─ helpers.js
 └─ views
+   ├─ editpost.handlebars
    ├─ homepage.handlebars
    ├─ layouts
-   │  ├─ main.handlebars
-   ├─ question.handlebars
-   ├─ scoreboard.handlebars
-   └─ login.handlebars
+   │  └─ main.handlebars
+   ├─ login.handlebars
+   └─ signup.handlebars
 ```
