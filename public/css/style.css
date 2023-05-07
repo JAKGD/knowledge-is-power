@@ -1,18 +1,24 @@
 /* General  */
+
 :root {
   --primary: #3b2b41;
   --secondary: #262334;
   --tertiary: #4e3653;
   --light: #ffffff;
 }
-
+@font-face {
+  font-family: "Xefore-vp34";
+  src: url("../fonts/Xefora-vp34.ttf");
+ }
 * {
-  font-family: Arial;
+  font-family: "Xefore-vp34";
   margin: 0%;
   background-color: #18031c;
 }
 
-
+h1{
+  font-size: 25px;
+}
 nav {
   background-color: var(--tertiary);
   margin: 0%;
@@ -117,6 +123,8 @@ header {
 .btn-submit {
   margin: 5px;
   font-size: 15px;
+  color: white;
+  font-family: "Xefore-vp34";
 }
 
 .new-post-btn-section {
@@ -191,6 +199,8 @@ color: white;
 height: 50px;
 width: 300px;
 margin:200px auto;
+font-family: "Xefore-vp34";
+font-size: 25px;
 
 
 
