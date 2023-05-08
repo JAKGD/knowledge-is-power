@@ -25,6 +25,9 @@ nav {
   padding: 10px;
 }
 
+input{
+color:white;
+}
 nav a {
   color: var(--light);
   padding: 14px 20px;
