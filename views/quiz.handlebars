@@ -1,1 +1,54 @@
-<script src="./js/quiz.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <nav>
+    <a href="/">Home</a>
+    {{#if loggedIn}}
+    {{!-- When loggedin, show Logout button --}}
+    <button id="logout" class="logout-btn">Logout</button> 
+    {{else}}
+    {{!-- When loggedout, show Login button --}}
+    <a href="/login">Login</a>
+    {{/if}}
+  </nav>
+
+  <header>
+    <h1>Quiz</h1>
+  </header>
+  
+  <main>
+    <div class="main">
+      <h2>Question {{questionNumber}}:</h2>
+      <p>{{question}}</p>
+      <form>
+        {{#each answers}}
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="answer" value="{{this}}" required>
+            {{this}}
+          </label>
+        </div>
+        {{/each}}
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+      <p>Score: {{score}}</p>
+    </div>
+  </main>
+  
+  {{#if loggedIn}}
+  {{!-- When loggedin, Logout button is activated --}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="/js/quiz.js"></script>
+</body>
+</html>
