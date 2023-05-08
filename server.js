@@ -7,13 +7,13 @@ const exphbs = require('express-handlebars');
 
 const routes = require('./controllers');
 const userRoutes = require('./controllers/api/user-routes');
+const quizRoutes = require('./controllers//api/quiz-routes');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up sessions
 const sess = {
   secret: 'This is secret',
   resave: false,
@@ -31,14 +31,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Add middleware to set MIME type for signup.js file (results in 404 error)
-// app.use('/js/signup.js', (req, res, next) => {
-//   res.type('text/javascript');
-//   next();
-// });
-
 app.use(routes);
 app.use('/api/user', userRoutes);
+app.use(quizRoutes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
