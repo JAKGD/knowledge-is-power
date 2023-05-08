@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-
 <body>
   <nav>
     <a href="/">Home</a>
     {{#if loggedIn}}
     {{!-- When loggedin, show Logout button --}}
     <button id="logout" class="logout-btn">Logout</button> 
-    {{else}}
-    {{!-- When loggedout, show Login button --}}
-    <a href="/login">Login</a>
     {{/if}}
   </nav>
 
@@ -32,10 +27,12 @@
     </div>
   </main>
   
-  {{#if loggedIn}}
-  {{!-- When loggedin, Logout button is activated --}}
-  <script src="./js/logout.js"></script>
+  {{#if quizStarted}}
+  <div class="quiz-score">
+    <h2>Score: {{score}}</h2>
+  </div>
   {{/if}}
-   <script src="./js/quiz.js"></script>
+  
+  <script src="/js/quiz.js"></script>
 </body>
 </html>

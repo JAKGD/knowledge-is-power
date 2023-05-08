@@ -1,2 +1,14 @@
-<button class ="begin-quiz-btn" onclick="beginQuiz()">Begin Quiz</button>
-
+{{#unless loggedIn}}
+  <div class="container">
+    <h2>Welcome to Knowledge is Power</h2>
+    <p>Please log in or create an account to start the quiz.</p>
+    <a href="/login" class="button is-primary">Log In</a>
+    <a href="/signup" class="button is-light">Sign Up</a>
+  </div>
+{{else}}
+  <div class="container">
+    <h2>Welcome to Knowledge is Power</h2>
+    <p>Are you ready to start the quiz?</p>
+    <button class="button is-primary begin-quiz-btn">Begin Quiz</button>
+  </div>
+{{/unless}}
