@@ -7,4 +7,3 @@ beginQuizBtn.addEventListener('click', beginQuiz);
 function beginQuiz() {
   // your code to start the quiz goes here
 };
-
