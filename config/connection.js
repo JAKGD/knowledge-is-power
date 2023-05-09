@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const sequelize = process.env.CLEARDB_DATABASE_URL
   ? new Sequelize(process.env.CLEARDB_DATABASE_URL) 
-  : new Sequelize(process.env.DB_NAME, process.env.dkpatzer, process.env.DB_%AngelYukZel78$$, { 
+  : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, { 
       host: 'localhost',
       dialect: 'mysql',
       dialectOptions: {
