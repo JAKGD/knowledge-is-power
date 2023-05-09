@@ -1,5 +1,6 @@
 const answerForm = document.querySelector('form');
-
+var beginQuizel=document.querySelector(".begin-quiz-btn")
+beginQuizel.addEventListener("click", ()=>beginQuiz())
 document.addEventListener('DOMContentLoaded', () => {
   const answerForm = document.querySelector('form');
 
@@ -55,5 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 function beginQuiz() {
+  window.location.href="/quiz"
   // your code to start the quiz goes here
 };

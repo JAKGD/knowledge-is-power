@@ -36,7 +36,7 @@
       </form>
       {{#if isCorrect}}
         <p class="feedback correct">Correct!</p>
-      {{else if isCorrect === false}}
+      {{else if isCorrect }}
         <p class="feedback incorrect">Sorry, the correct answer was "{{question.answers.[0].answer_choice}}".</p>
       {{/if}}
       <p>Score: {{score}}</p>

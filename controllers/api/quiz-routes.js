@@ -10,14 +10,6 @@ const shuffleArray = (array) => {
 };
 
 router.get('/quiz', async (req, res) => {
-<<<<<<< HEAD
-  console.log("quiz")
-  // Set player score to 0
-  req.session.score = 0;
-
-  // Get a random question and its answers
-=======
->>>>>>> 0a6374e235fe3a292addae70426b4951ac94c17e
   const question = await Question.findOne({
     include: [Answer],
     order: sequelize.random(),
@@ -29,15 +21,10 @@ router.get('/quiz', async (req, res) => {
   }
 
   shuffleArray(question.answers);
-<<<<<<< HEAD
-console.log(question)
-  // Render the quiz view with the question and answers
-=======
 
   req.session.score = 0;
   req.session.questionId = question.id;
 
->>>>>>> 0a6374e235fe3a292addae70426b4951ac94c17e
   res.render('quiz', {
     question,
     score: req.session.score,
