@@ -4,41 +4,14 @@
 //-- the sequelize variable is exported from the module, allowing it to be used by other modules in the application for querying the database--//
 
 
-/*const Sequelize = require('sequelize');
-require('dotenv').config(); 
-
-const sequelize = process.env.CLEARDB_DATABASE_URL
-  ? new Sequelize(process.env.CLEARDB_DATABASE_URL) 
-  : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, { 
-      host: 'localhost',
-      dialect: 'mysql',
-      dialectOptions: {
-        decimalNumbers: true,
-      },
-    });
-
-module.exports = sequelize;
-
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
-});
-*/
-
-//  const Sequelize = require('sequelize');
-
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
 let sequelize;
 
-if (process.env.DATABASE_URL) {
+if (process.env.CLEARDB_DATABASE_URL) {
+  sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+} else if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
@@ -59,4 +32,3 @@ if (process.env.DATABASE_URL) {
 }
 
 module.exports = sequelize;
-
