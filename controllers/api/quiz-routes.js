@@ -9,29 +9,26 @@ const shuffleArray = (array) => {
   }
 };
 
-router.get('/quiz', async (req, res) => {
-  const question = await Question.findOne({
+router.get('/', async (req, res) => {
+  console.log("Are we here?")
+  const questions = await Question.findAll({
     include: [Answer],
-    order: sequelize.random(),
   });
 
-  if (!question) {
+  if (!questions) {
     res.send('There are no questions in the database.');
     return;
   }
 
-  shuffleArray(question.answers);
-
   req.session.score = 0;
-  req.session.questionId = question.id;
+  // req.session.questionId = question.id;
 
-  res.render('quiz', {
-    question,
-    score: req.session.score,
-  });
+  res.json(
+    questions[Math.floor(Math.random() * (50))]
+  );
 });
 
-router.post('/quiz', async (req, res) => {
+router.post('/', async (req, res) => {
   const { answer } = req.body;
   const questionId = req.session.questionId;
   const question = await Question.findByPk(questionId, {

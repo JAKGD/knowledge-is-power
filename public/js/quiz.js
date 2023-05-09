@@ -1,6 +1,7 @@
-const answerForm = document.querySelector('form');
+const answerForm = document.querySelector('#answer-form');
 var beginQuizel=document.querySelector(".begin-quiz-btn")
-beginQuizel.addEventListener("click", ()=>beginQuiz())
+beginQuizel.addEventListener("click", beginQuiz)
+
 document.addEventListener('DOMContentLoaded', () => {
   const answerForm = document.querySelector('form');
 
@@ -55,7 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreText.textContent = `Score: ${score}`;
   };
 });
-function beginQuiz() {
+
+async function beginQuiz() {
   window.location.href="/quiz"
-  // your code to start the quiz goes here
+  // Pseudo Code
+
+  // When we click the "Begin Quiz Button"
+  // Then we want a question with four possible answers to appear
+  // Then when we click one of the answers, it will load the second question
+  // This same process will occur ten times
+  // At the end of the quiz, the user's score, determined by their amount of correct answers will be displayed
+  // An End Quiz button will return the user to home
+  
+  const response = await fetch('/api/quiz', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  
+  console.log("response", response)
 };
