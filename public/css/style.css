@@ -25,6 +25,9 @@ nav {
   padding: 10px;
 }
 
+input{
+color:white;
+}
 nav a {
   color: var(--light);
   padding: 14px 20px;
@@ -48,8 +51,6 @@ header {
 
 
 .main {
- 
- 
   font-family: Arial;
   width: 100%;
   align-items: center;
@@ -61,6 +62,12 @@ header {
   height: 90vh;
 }
 
+.main-content{
+  color: white;
+  background:rgb(49, 17, 51, .4);
+  font-size: 26px;
+  font-weight: bold;
+}
 
 .card {
   margin: 20px;
@@ -194,6 +201,7 @@ header {
   color: var(--secondary);
   background-color: var(--primary);
 }
+
 .begin-quiz-btn {
 color: white;
 height: 50px;
@@ -201,7 +209,4 @@ width: 300px;
 margin:200px auto;
 font-family: "Xefore-vp34";
 font-size: 25px;
-
-
-
 }

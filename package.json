@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/index.js", 
+    "dev": "nodemon server.js"
   },
   "author": "Goldie Rizova, Andres Miro, Jon Schuh, David Patzer, Kane Layng",
   "license": "ISC",
@@ -16,8 +17,6 @@
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
     "express-session": "^1.17.3",
-    "handlebars": "^4.7.7",
-    "mime": "^3.0.0",
     "mysql2": "^3.2.4",
     "sequelize": "^6.31.0"
   },

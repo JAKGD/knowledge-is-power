@@ -3,7 +3,6 @@ const answerForm = document.querySelector('form');
 document.addEventListener('DOMContentLoaded', () => {
   const answerForm = document.querySelector('form');
 
-
   answerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     
@@ -55,3 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreText.textContent = `Score: ${score}`;
   };
 });
+=======
+function beginQuiz() {
+  // your code to start the quiz goes here
+};

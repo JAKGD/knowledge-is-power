@@ -1,6 +1,7 @@
 //-- Adding function logout that sends a POST request to /api/user/logout with the headers Content-Type set to application/json--//
 
 const logout = async () => {
+  console.log("logout")
   const response = await fetch('/api/user/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
