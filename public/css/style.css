@@ -195,6 +195,8 @@ header {
   transition: color 0.1s;
   font-weight: bold;
   text-align: center;
+  font-family: “Xefore-vp34”;
+  background-color: hsl(296, 62%, 5%);
 }
 
 .logout-btn:hover {
