@@ -210,3 +210,13 @@ margin:200px auto;
 font-family: "Xefore-vp34";
 font-size: 25px;
 }
+.container{
+  background: none;
+}
+
+.main-content{
+  color: white;
+  background:rgb(49, 17, 51, .4);
+  font-size: 26px;
+  font-weight: bold;
+}

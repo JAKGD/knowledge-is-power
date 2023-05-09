@@ -10,6 +10,7 @@ const shuffleArray = (array) => {
 };
 
 router.get('/quiz', async (req, res) => {
+  console.log("quiz")
   // Set player score to 0
   req.session.score = 0;
 
@@ -21,7 +22,7 @@ router.get('/quiz', async (req, res) => {
 
   // Shuffle the answers
   shuffleArray(question.answers);
-
+console.log(question)
   // Render the quiz view with the question and answers
   res.render('quiz', {
     question,

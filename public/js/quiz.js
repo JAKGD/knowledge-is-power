@@ -1,9 +1,19 @@
-// get reference to the "Begin Quiz" button
-const beginQuizBtn = document.querySelector('.begin-quiz-btn');
 
-// add event listener to begin quiz when the button is clicked
-beginQuizBtn.addEventListener('click', beginQuiz);
+var beginQuizBtn = document.querySelector('.begin-quiz-btn');
 
-function beginQuiz() {
-  // your code to start the quiz goes here
+
+beginQuizBtn?.addEventListener('click', beginQuiz);
+
+async function beginQuiz() {
+window.location.href="/quiz"
+const response = await fetch('/api/user/quiz'
+);
+
+if (response.ok) {
+  console.log("startQuiz")
+} else {
+  alert('Failed to log in.'); 
 };
+
+}
+
