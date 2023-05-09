@@ -3,18 +3,8 @@ const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   try {
-<<<<<<< Updated upstream
   if (req.session.loggedIn) {
     res.render('homepage', { loggedIn: req.session.loggedIn });
-=======
-    if (req.session.loggedIn){
-      res.render('homepage', {loggedIn: req.session.loggedIn });
-    }
-    else res.redirect('login');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
->>>>>>> Stashed changes
   }
 
   else res.redirect('login');
