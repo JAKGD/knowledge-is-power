@@ -12,24 +12,10 @@
   </header>
   
   <main>
-    <div class="quiz-container">
-      <h2>{{question.question_text}}</h2>
-      <form id="answer-form">
-        {{#each question.answers}}
-          <div class="answer-choice">
-            <input type="radio" name="answer" id="{{id}}" value="{{answer_choice}}">
-            <label for="{{id}}">{{answer_choice}}</label>
-          </div>
-        {{/each}}
-        <input type="submit" value="Submit Answer">
-      </form>
-      {{#if isCorrect}}
-        <p class="feedback correct">Correct!</p>
-      {{else if isCorrect }}
-        <p class="feedback incorrect">Sorry, the correct answer was "{{question.answers.[0].answer_choice}}".</p>
-      {{/if}}
-      <p>Score: {{score}}</p>
-    </div>
+    <div id="quiz"></div>
+    <button id="submit">Submit Quiz</button>
+    <div id="results"></div>
   </main>
-  {{!-- <script src="../public/js/logout.js"></script>
-  <script src="../public/js/quiz.js"></script> --}}
+  
+  {{!-- <script src="../public/js/logout.js"></script>  --}}
+  {{!-- <script src="../public/js/quiz.js"></script> --}}
