@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-
-var beginQuizBtn = document.querySelector('.begin-quiz-btn');
-
-
-beginQuizBtn?.addEventListener('click', beginQuiz);
-
-async function beginQuiz() {
-window.location.href="/quiz"
-const response = await fetch('/api/user/quiz'
-);
-
-if (response.ok) {
-  console.log("startQuiz")
-} else {
-  alert('Failed to log in.'); 
-};
-
-}
-
-=======
 const answerForm = document.querySelector('form');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -75,8 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreText.textContent = `Score: ${score}`;
   };
 });
-=======
 function beginQuiz() {
   // your code to start the quiz goes here
 };
->>>>>>> 0a6374e235fe3a292addae70426b4951ac94c17e
