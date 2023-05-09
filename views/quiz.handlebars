@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +8,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-
 <body>
   <nav>
     <a href="/">Home</a>
     {{#if loggedIn}}
-    {{!-- When loggedin, show Logout button --}}
-    <button id="logout" class="logout-btn">Logout</button> 
+      <button id="logout" class="logout-btn">Logout</button>
     {{else}}
-    {{!-- When loggedout, show Login button --}}
-    <a href="/login">Login</a>
+      <a href="/login">Login</a>
     {{/if}}
   </nav>
 
@@ -27,28 +23,26 @@
   </header>
   
   <main>
-    <div class="main">
-      <h2>Question {{questionNumber}}:</h2>
-      <p>{{question}}</p>
-      <form>
-        {{#each answers}}
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="answer" value="{{this}}" required>
-            {{this}}
-          </label>
-        </div>
+    <div class="quiz-container">
+      <h2>{{question.question_text}}</h2>
+      <form method="post" action="/quiz">
+        {{#each question.answers}}
+          <div class="answer-choice">
+            <input type="radio" name="answer" id="{{id}}" value="{{answer_choice}}">
+            <label for="{{id}}">{{answer_choice}}</label>
+          </div>
         {{/each}}
-        <button type="submit" class="submit-btn">Submit</button>
+        <input type="submit" value="Submit Answer">
       </form>
+      {{#if isCorrect}}
+        <p class="feedback correct">Correct!</p>
+      {{else if isCorrect === false}}
+        <p class="feedback incorrect">Sorry, the correct answer was "{{question.answers.[0].answer_choice}}".</p>
+      {{/if}}
       <p>Score: {{score}}</p>
     </div>
   </main>
-  
-  {{#if loggedIn}}
-  {{!-- When loggedin, Logout button is activated --}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-  <script src="/js/quiz.js"></script>
+  <script src="../public/js/logout.js"></script>
+  <script src="../public/js/quiz.js"></script>
 </body>
 </html>

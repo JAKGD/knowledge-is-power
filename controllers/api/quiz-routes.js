@@ -10,53 +10,87 @@ const shuffleArray = (array) => {
 };
 
 router.get('/quiz', async (req, res) => {
+<<<<<<< HEAD
   console.log("quiz")
   // Set player score to 0
   req.session.score = 0;
 
   // Get a random question and its answers
+=======
+>>>>>>> 0a6374e235fe3a292addae70426b4951ac94c17e
   const question = await Question.findOne({
     include: [Answer],
     order: sequelize.random(),
   });
 
-  // Shuffle the answers
+  if (!question) {
+    res.send('There are no questions in the database.');
+    return;
+  }
+
   shuffleArray(question.answers);
+<<<<<<< HEAD
 console.log(question)
   // Render the quiz view with the question and answers
+=======
+
+  req.session.score = 0;
+  req.session.questionId = question.id;
+
+>>>>>>> 0a6374e235fe3a292addae70426b4951ac94c17e
   res.render('quiz', {
     question,
-    isCorrect: null,
     score: req.session.score,
   });
 });
 
 router.post('/quiz', async (req, res) => {
-  const { answerId } = req.body;
+  const { answer } = req.body;
+  const questionId = req.session.questionId;
+  const question = await Question.findByPk(questionId, {
+    include: [Answer],
+  });
 
-  // Get the selected answer
-  const selectedAnswer = await Answer.findByPk(answerId);
+  console.log('question:', question);
+  console.log('questionId:', questionId);
 
-  // Check if the answer is correct
-  const isCorrect = selectedAnswer.is_correct;
+  const selectedAnswer = question.answers.find(
+    (ans) => ans.answer_choice === answer
+  );
 
-  // Update the player score
-  req.session.score += isCorrect ? 1 : 0;
+  console.log('selectedAnswer:', selectedAnswer);
 
-  // Get a new random question and its answers
-  const question = await Question.findOne({
+  let isCorrect;
+  if (selectedAnswer.is_correct) {
+    req.session.score++;
+    isCorrect = true;
+  } else {
+    isCorrect = false;
+  }
+
+  const newQuestion = await Question.findOne({
+    where: {
+      id: { [Op.not]: questionId },
+    },
     include: [Answer],
     order: sequelize.random(),
   });
 
-  // Shuffle the answers
-  shuffleArray(question.answers);
+  console.log('newQuestion:', newQuestion);
 
-  // Render the quiz view with the new question and answers
+  if (!newQuestion) {
+    res.send('There are no more questions in the database.');
+    return;
+  }
+
+  shuffleArray(newQuestion.answers);
+
+  req.session.questionId = newQuestion.id;
+
   res.render('quiz', {
-    question,
-    isCorrect,
+    question: newQuestion,
     score: req.session.score,
+    isCorrect,
   });
 });
 

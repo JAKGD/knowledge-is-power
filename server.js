@@ -6,8 +6,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 
 const routes = require('./controllers');
-const userRoutes = require('./controllers/api/user-routes');
-const quizRoutes = require('./controllers//api/quiz-routes');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
@@ -32,9 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-app.use('/api/user', userRoutes);
-app.use(quizRoutes);
-
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
