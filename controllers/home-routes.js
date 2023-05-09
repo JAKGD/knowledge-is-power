@@ -1,6 +1,5 @@
 
 const router = require('express').Router();
-// const withAuth = require('../utils/auth'); 
 
 router.get('/', async (req, res) => {
   try {
@@ -22,6 +21,5 @@ router.get('/signup', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('login', { loggedIn: req.session.loggedIn });
 });
-
 
 module.exports = router;
