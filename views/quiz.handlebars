@@ -1,21 +1,17 @@
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-      <button id="logout" class="logout-btn">Logout</button>
-    {{else}}
-      <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-
-  <header>
-    <h1>Quiz</h1>
-  </header>
-  
-  <main>
-    <div id="quiz"></div>
-    <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
-  </main>
-  
-  {{!-- <script src="../public/js/logout.js"></script>  --}}
-  {{!-- <script src="../public/js/quiz.js"></script> --}}
+<div class="quiz-container">
+  <h2>{{question.question_text}}</h2>
+  <form method="POST" id="quiz-form">
+    <input type="hidden" name="question_id" value="{{question.id}}">
+    {{#each question.answers}}
+      <div class="answer-choice">
+        <input type="radio" name="answer" id="{{this.id}}" value="{{this.answer_choice}}" required>
+        <label for="{{this.id}}">{{this.answer_choice}}</label>
+      </div>
+    {{/each}}
+    <button class="button is-primary" type="submit">Submit Answer</button>
+  </form>
+  {{#if score}}
+    <p>Score: {{score}}</p>
+  {{/if}}
+  <button class="button is-primary next-question-btn" style="display:none;">Next Question</button>
+</div>
