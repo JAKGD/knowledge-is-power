@@ -61,4 +61,3 @@ const beginQuizBtn = document.querySelector('.begin-quiz-btn');
 if (beginQuizBtn) {
   beginQuizBtn.addEventListener("click", beginQuiz);
 };
-

@@ -10,26 +10,26 @@ const shuffleArray = (array) => {
   }
 };
 
+
 router.get('/quiz', async (req, res) => {
   if (!req.session.userId) {
-    res.redirect('/signup'); // Redirect to signup if user is not logged in
+    res.redirect('/login'); // Redirect to login if user is not logged in
     return;
   }
 
   const question = await Question.findOne({
+
     include: [Answer],
-    order: sequelize.random(),
   });
 
-  if (!question) {
+  if (!questions) {
     res.send('There are no questions in the database.');
     return;
   }
 
-  shuffleArray(question.answers);
-
   req.session.score = 0;
-  req.session.questionId = question.id;
+  // req.session.questionId = question.id;
+
 
   res.render('quiz', {
     question,
