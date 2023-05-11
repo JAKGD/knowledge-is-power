@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('sequelize');
 const { Question, Answer } = require('../../models');
 
 // Middleware to shuffle an array in place
@@ -9,9 +10,15 @@ const shuffleArray = (array) => {
   }
 };
 
-router.get('/', async (req, res) => {
-  console.log("Are we here?")
-  const questions = await Question.findAll({
+
+router.get('/quiz', async (req, res) => {
+  if (!req.session.userId) {
+    res.redirect('/login'); // Redirect to login if user is not logged in
+    return;
+  }
+
+  const question = await Question.findOne({
+
     include: [Answer],
   });
 
@@ -23,69 +30,59 @@ router.get('/', async (req, res) => {
   req.session.score = 0;
   // req.session.questionId = question.id;
 
-  // const question_1 = questions[Math.floor(Math.random() * (50))]
-  // const question_2 = questions[Math.floor(Math.random() * (50))]
-  // const question_3 = questions[Math.floor(Math.random() * (50))]
-  // const question_4 = questions[Math.floor(Math.random() * (50))]
-  // const question_5 = questions[Math.floor(Math.random() * (50))]
 
-  shuffleArray(questions)
-
-  res.json(
-    questions
-  );
-
-  console.log("response sent")
+  res.render('quiz', {
+    question,
+    score: req.session.score,
+  });
 });
 
-// router.post('/', async (req, res) => {
-//   const { answer } = req.body;
-//   const questionId = req.session.questionId;
-//   const question = await Question.findByPk(questionId, {
-//     include: [Answer],
-//   });
+router.post('/quiz', async (req, res) => {
+  if (!req.session.userId) {
+    res.redirect('/signup'); // Redirect to signup if user is not logged in
+    return;
+  }
 
-//   console.log('question:', question);
-//   console.log('questionId:', questionId);
+  const { answer } = req.body;
+  const questionId = req.session.questionId;
+  const question = await Question.findByPk(questionId, {
+    include: [Answer],
+  });
 
-//   const selectedAnswer = question.answers.find(
-//     (ans) => ans.answer_choice === answer
-//   );
+  const selectedAnswer = question.answers.find(
+    (ans) => ans.answer_choice === answer
+  );
 
-//   console.log('selectedAnswer:', selectedAnswer);
+  let isCorrect;
+  if (selectedAnswer.is_correct) {
+    req.session.score++;
+    isCorrect = true;
+  } else {
+    isCorrect = false;
+  }
 
-//   let isCorrect;
-//   if (selectedAnswer.is_correct) {
-//     req.session.score++;
-//     isCorrect = true;
-//   } else {
-//     isCorrect = false;
-//   }
+  const newQuestion = await Question.findOne({
+    where: {
+      id: { [sequelize.Op.not]: questionId },
+    },
+    include: [Answer],
+    order: sequelize.random(),
+  });
 
-//   const newQuestion = await Question.findOne({
-//     where: {
-//       id: { [Op.not]: questionId },
-//     },
-//     include: [Answer],
-//     order: sequelize.random(),
-//   });
+  if (!newQuestion) {
+    res.send('There are no more questions in the database.');
+    return;
+  }
 
-//   console.log('newQuestion:', newQuestion);
+  shuffleArray(newQuestion.answers);
 
-//   if (!newQuestion) {
-//     res.send('There are no more questions in the database.');
-//     return;
-//   }
+  req.session.questionId = newQuestion.id;
 
-//   shuffleArray(newQuestion.answers);
-
-//   req.session.questionId = newQuestion.id;
-
-//   res.render('quiz', {
-//     question: newQuestion,
-//     score: req.session.score,
-//     isCorrect,
-//   });
-// });
+  res.render('quiz', {
+    question: newQuestion,
+    score: req.session.score,
+    isCorrect,
+  });
+});
 
 module.exports = router;

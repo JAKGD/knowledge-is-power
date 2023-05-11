@@ -5,31 +5,30 @@ class Answer extends Model {}
 
 Answer.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     question_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'question',
-        key: 'id',
-      },
+        key: 'id'
+      }
     },
     answer_choice: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-      },
-    is_correct: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,    
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    answer_key: {
-        type:DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    }, 
-    
+    is_correct: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   },
   {
     sequelize,
-    timestamps: true, 
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'answer',
