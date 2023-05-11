@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('sequelize');
 const { Question, Answer } = require('../../models');
 
 // Middleware to shuffle an array in place
@@ -10,6 +11,11 @@ const shuffleArray = (array) => {
 };
 
 router.get('/quiz', async (req, res) => {
+  if (!req.session.userId) {
+    res.redirect('/signup'); // Redirect to signup if user is not logged in
+    return;
+  }
+
   const question = await Question.findOne({
     include: [Answer],
     order: sequelize.random(),
@@ -32,20 +38,20 @@ router.get('/quiz', async (req, res) => {
 });
 
 router.post('/quiz', async (req, res) => {
+  if (!req.session.userId) {
+    res.redirect('/signup'); // Redirect to signup if user is not logged in
+    return;
+  }
+
   const { answer } = req.body;
   const questionId = req.session.questionId;
   const question = await Question.findByPk(questionId, {
     include: [Answer],
   });
 
-  console.log('question:', question);
-  console.log('questionId:', questionId);
-
   const selectedAnswer = question.answers.find(
     (ans) => ans.answer_choice === answer
   );
-
-  console.log('selectedAnswer:', selectedAnswer);
 
   let isCorrect;
   if (selectedAnswer.is_correct) {
@@ -57,13 +63,11 @@ router.post('/quiz', async (req, res) => {
 
   const newQuestion = await Question.findOne({
     where: {
-      id: { [Op.not]: questionId },
+      id: { [sequelize.Op.not]: questionId },
     },
     include: [Answer],
     order: sequelize.random(),
   });
-
-  console.log('newQuestion:', newQuestion);
 
   if (!newQuestion) {
     res.send('There are no more questions in the database.');
