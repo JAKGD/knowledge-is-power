@@ -1,11 +1,10 @@
-<div class="quiz-container">
-  <h2>{{question.question_text}}</h2>
+  <h2>{{question.dataValues.question_prompt}}</h2>
   <form method="POST" id="quiz-form">
-    <input type="hidden" name="question_id" value="{{question.id}}">
-    {{#each question.answers}}
+    <input type="hidden" name="question_id" value="{{question.dataValues.id}}">
+    {{#each question.dataValues.answers}}
       <div class="answer-choice">
-        <input type="radio" name="answer" id="{{this.id}}" value="{{this.answer_choice}}" required>
-        <label for="{{this.id}}">{{this.answer_choice}}</label>
+        <input type="radio" name="answer" id="{{this.dataValues.id}}" value="{{this.dataValues.is_correct}}" required>
+        <label for="{{this.dataValues.id}}">{{this.dataValues.answer_choice}}</label>
       </div>
     {{/each}}
     <button class="button is-primary" type="submit">Submit Answer</button>
