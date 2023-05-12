@@ -11,31 +11,31 @@ const shuffleArray = (array) => {
 };
 
 
-router.get('/quiz', async (req, res) => {
-  if (!req.session.userId) {
-    res.redirect('/login'); // Redirect to login if user is not logged in
-    return;
-  }
+// router.get('/quiz', async (req, res) => {
+//   if (!req.session.userId) {
+//     res.redirect('/login'); // Redirect to login if user is not logged in
+//     return;
+//   }
 
-  const question = await Question.findOne({
+//   const question = await Question.findOne({
 
-    include: [Answer],
-  });
+//     include: [Answer],
+//   });
 
-  if (!questions) {
-    res.send('There are no questions in the database.');
-    return;
-  }
+//   if (!questions) {
+//     res.send('There are no questions in the database.');
+//     return;
+//   }
 
-  req.session.score = 0;
-  // req.session.questionId = question.id;
+//   req.session.score = 0;
+//   // req.session.questionId = question.id;
 
 
-  res.render('quiz', {
-    question,
-    score: req.session.score,
-  });
-});
+//   res.render('quiz', {
+//     question,
+//     score: req.session.score,
+//   });
+// });
 
 router.post('/quiz', async (req, res) => {
   if (!req.session.userId) {
