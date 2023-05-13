@@ -1,35 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-      <button id="logout" class="logout-btn">Logout</button>
-    {{else}}
-      <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-
-  <header>
-    <h1>Quiz</h1>
-  </header>
-  
-  <main>
-    <div class="quiz-container">
-      <h2>{{question.dataValues.question_prompt}}</h2>
+  <h2>{{question.dataValues.question_prompt}}</h2>
   <form method="POST" id="quiz-form">
     <input type="hidden" name="question_id" value="{{question.dataValues.id}}">
     {{#each question.dataValues.answers}}
       <div class="answer-choice">
-        <input type="radio" name="answer" id="{{this.dataValues.id}}" value="{{this.dataValues.answer_choice}}" required>
+        <input type="radio" name="answer" id="{{this.dataValues.id}}" value="{{this.dataValues.is_correct}}" required>
         <label for="{{this.dataValues.id}}">{{this.dataValues.answer_choice}}</label>
       </div>
     {{/each}}
@@ -38,12 +12,5 @@
   {{#if score}}
     <p>Score: {{score}}</p>
   {{/if}}
-  <button class="button is-primary next-question-btn hidden">Next Question</button>
+  <button class="button is-primary next-question-btn" style="display:none;">Next Question</button>
 </div>
-
-    </div>
-  </main>
-  <script src="../public/js/logout.js"></script>
-  <script src="../public/js/quiz.js"></script>
-</body>
-</html>

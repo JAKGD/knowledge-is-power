@@ -3,30 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   answerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    nextquestion.classList.remove("hidden")
+
     const formData = new FormData(answerForm);
     const answerId = formData.get('answer');
-    console.log(formData.get("question_id"))
-const questionId=formData.get("question_id")
-console.log(formData)
 
-    const response = await fetch('/api/quiz/quiz', {
+    const response = await fetch('/quiz', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ answerId, questionId })
+      body: JSON.stringify({ answerId })
     });
 
     const data = await response.json();
-console.log(data)
+
     answerForm.reset();
 
     updateQuiz(data);
   });
-  
+
   const updateQuiz = (data) => {
-    console.log(data)
     const { question, isCorrect, score } = data;
 
     const questionText = document.querySelector('h2');
@@ -65,5 +61,3 @@ const beginQuizBtn = document.querySelector('.begin-quiz-btn');
 if (beginQuizBtn) {
   beginQuizBtn.addEventListener("click", beginQuiz);
 };
-
-nextquestion = document.querySelector(".next-question-btn")
