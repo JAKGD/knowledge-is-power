@@ -223,3 +223,6 @@ font-size: 25px;
   font-size: 26px;
   font-weight: bold;
 }
+.hidden{
+display: none;
+}

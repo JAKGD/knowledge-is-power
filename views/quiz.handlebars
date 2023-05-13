@@ -24,22 +24,23 @@
   
   <main>
     <div class="quiz-container">
-      <h2>{{question.question_text}}</h2>
-      <form method="post" action="/quiz">
-        {{#each question.answers}}
-          <div class="answer-choice">
-            <input type="radio" name="answer" id="{{id}}" value="{{answer_choice}}">
-            <label for="{{id}}">{{answer_choice}}</label>
-          </div>
-        {{/each}}
-        <input type="submit" value="Submit Answer">
-      </form>
-      {{#if isCorrect}}
-        <p class="feedback correct">Correct!</p>
-      {{else if isCorrect }}
-        <p class="feedback incorrect">Sorry, the correct answer was "{{question.answers.[0].answer_choice}}".</p>
-      {{/if}}
-      <p>Score: {{score}}</p>
+      <h2>{{question.dataValues.question_prompt}}</h2>
+  <form method="POST" id="quiz-form">
+    <input type="hidden" name="question_id" value="{{question.dataValues.id}}">
+    {{#each question.dataValues.answers}}
+      <div class="answer-choice">
+        <input type="radio" name="answer" id="{{this.dataValues.id}}" value="{{this.dataValues.answer_choice}}" required>
+        <label for="{{this.dataValues.id}}">{{this.dataValues.answer_choice}}</label>
+      </div>
+    {{/each}}
+    <button class="button is-primary" type="submit">Submit Answer</button>
+  </form>
+  {{#if score}}
+    <p>Score: {{score}}</p>
+  {{/if}}
+  <button class="button is-primary next-question-btn hidden">Next Question</button>
+</div>
+
     </div>
   </main>
   <script src="../public/js/logout.js"></script>
