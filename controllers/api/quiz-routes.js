@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('sequelize');
 const { Question, Answer } = require('../../models');
+const session = require('express-session');
 
 // Middleware to shuffle an array in place
 const shuffleArray = (array) => {
@@ -38,19 +39,24 @@ const shuffleArray = (array) => {
 // });
 
 router.post('/quiz', async (req, res) => {
-  if (!req.session.userId) {
-    res.redirect('/signup'); // Redirect to signup if user is not logged in
-    return;
-  }
+  // console.log(req.session)
+  // if (!req.session.userId) {
+  //   res.redirect('/signup'); // Redirect to signup if user is not logged in
+  //   return;
+  // }
 
-  const { answer } = req.body;
-  const questionId = req.session.questionId;
+  const { answerId } = req.body;
+  console.log("answerId", answerId)
+
+  
+  const questionId = req.body.questionId
+  console.log(questionId)
   const question = await Question.findByPk(questionId, {
     include: [Answer],
   });
-
+console.log(question)
   const selectedAnswer = question.answers.find(
-    (ans) => ans.answer_choice === answer
+    (ans) => ans.answer_choice === answerId
   );
 
   let isCorrect;
@@ -66,7 +72,7 @@ router.post('/quiz', async (req, res) => {
       id: { [sequelize.Op.not]: questionId },
     },
     include: [Answer],
-    order: sequelize.random(),
+   // order: sequelize.random(),
   });
 
   if (!newQuestion) {
