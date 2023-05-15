@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Question, Answer } = require('../models/');
+
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -19,34 +20,29 @@ router.get('/', async (req, res) => {
   res.status(500).json(err);
 }
 });
+
 router.get('/quiz', async (req, res) => {
-  console.log('here we get some data.')
-  // const questions = await Question.findAll({
-    
-  // })
-  // res.render('quiz', { loggedIn: req.session.loggedIn });
-  // if (!req.session.userId) {
-  //   res.redirect('/login'); // Redirect to login if user is not logged in
-  //   return;
-  // }
-
-  const question = await Question.findOne({
-
+  const questions = await Question.findAll({
     include: [Answer],
   });
-  console.log("Patrick", question.answers[0].dataValues)
-  // if (!questions) {
-  //   res.send('There are no questions in the database.');
-  //   return;
-  // }
 
-  req.session.score = 0;
-  // req.session.questionId = question.id;
+  shuffleArray(questions);
 
+  // var question_1 = questions[0];
+  // var question_2 = questions[1];
+  // var question_3 = questions[2];
+  // var question_4 = questions[3];
+  // var question_5 = questions[4];
+
+  // const question_bank = [];
+
+  const question = questions[0]
+
+  // question_bank.push(question_1, question_2, question_3, question_4, question_5)
 
   res.render('quiz', {
-    question,
-    score: req.session.score,
+    // question_bank,
+    question
   });
 
 });

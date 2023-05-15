@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(answerForm);
     const answerId = formData.get('answer');
     console.log(formData.get("question_id"))
-const questionId=formData.get("question_id")
-console.log(formData)
+    const questionId = formData.get("question_id")
+    console.log(formData)
 
     const response = await fetch('/api/quiz/quiz', {
       method: 'POST',
@@ -19,12 +19,12 @@ console.log(formData)
     });
 
     const data = await response.json();
-console.log(data)
+    console.log(data)
     answerForm.reset();
 
     updateQuiz(data);
   });
-  
+
   const updateQuiz = (data) => {
     console.log(data)
     const { question, isCorrect, score } = data;
@@ -58,10 +58,35 @@ console.log(data)
 });
 
 function beginQuiz() {
-  window.location.href="/quiz";
+  window.location.href = "/quiz";
+};
+
+function submitAnswer() {
+  var element = document.getElementsByTagName('input');
+
+  for (i = 0; i < element.length; i++) {
+    if (element[i].checked)      
+      if (element.value = "true") {
+        score_value =+ 100;
+        document.getElementById("correct-status").innerHTML = "Your Answer was Correct!";
+        document.getElementById("score").innerHTML = "Your Score: " + score_value;
+      }
+      
+      else {
+        score_value =- 100;
+        document.getElementById("correct-status").innerHTML = "Your Answer was Incorrect!";
+        document.getElementById("score").innerHTML = "Your Score: " + score_value;
+      };  
+  };
 };
 
 const beginQuizBtn = document.querySelector('.begin-quiz-btn');
+const submitAnswerBtn = document.querySelector('.submit-answer-btn')
+
+submitAnswerBtn.addEventListener("click", submitAnswer);
+
+var score_value = 0;
+
 if (beginQuizBtn) {
   beginQuizBtn.addEventListener("click", beginQuiz);
 };
