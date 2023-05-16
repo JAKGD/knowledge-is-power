@@ -6,6 +6,7 @@ const shuffleArray = (array) => {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+  return array
 };
 router.get('/', async (req, res) => {
   try {
@@ -26,23 +27,20 @@ router.get('/quiz', async (req, res) => {
     include: [Answer],
   });
 
-  shuffleArray(questions);
+  let shuffledArr = shuffleArray(questions);
 
-  // var question_1 = questions[0];
-  // var question_2 = questions[1];
-  // var question_3 = questions[2];
-  // var question_4 = questions[3];
-  // var question_5 = questions[4];
+  let questionsToFE = [
+    shuffledArr[0],
+    shuffledArr[1],
+    shuffledArr[2],
+    shuffledArr[3],
+    shuffledArr[4]
+  ]
 
-  // const question_bank = [];
-
-  const question = questions[0]
-
-  // question_bank.push(question_1, question_2, question_3, question_4, question_5)
+  // const question = questions[0]
 
   res.render('quiz', {
-    // question_bank,
-    question
+    questionsToFE
   });
 
 });

@@ -62,17 +62,24 @@ function beginQuiz() {
 };
 
 function submitAnswer() {
-  var element = document.getElementsByTagName('input');
+  var element = document.getElementsByClassName('option');
 
   for (i = 0; i < element.length; i++) {
-    if (element[i].checked)      
-      if (element.value = "true") {
+    
+    // console.log(element[i])
+
+    if (element[i].checked) 
+      console.log(i, element[i].value, "This is checked");
+      
+      if (element[i].value == true) {
+        console.log(i, element[i].value, element[i].checked, "true")
         score_value =+ 100;
         document.getElementById("correct-status").innerHTML = "Your Answer was Correct!";
         document.getElementById("score").innerHTML = "Your Score: " + score_value;
       }
       
       else {
+        console.log(i, element[i].value, element[i].checked, "false")
         score_value =- 100;
         document.getElementById("correct-status").innerHTML = "Your Answer was Incorrect!";
         document.getElementById("score").innerHTML = "Your Score: " + score_value;
