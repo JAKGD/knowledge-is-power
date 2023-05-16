@@ -29,20 +29,16 @@ router.get('/quiz', async (req, res) => {
 
   let shuffledArr = shuffleArray(questions);
 
-  let questionsToFE = [
-    shuffledArr[0],
-    shuffledArr[1],
-    shuffledArr[2],
-    shuffledArr[3],
-    shuffledArr[4]
-  ]
+  let questionsToFE = shuffledArr.map((question) => {
+    const shuffledAnswers = shuffleArray(question.answers); // Shuffle the answers for each question
+    return { ...question, answers: shuffledAnswers };
+  });
 
-  // const question = questions[0]
+  questionsToFE = questionsToFE.slice(0, 5); // Get the first 5 shuffled questions
 
   res.render('quiz', {
     questionsToFE
   });
-
 });
 
 router.get('/signup', (req, res) => {
