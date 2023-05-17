@@ -37,7 +37,8 @@ router.get('/quiz', async (req, res) => {
   questionsToFE = questionsToFE.slice(0, 5); // Get the first 5 shuffled questions
 
   res.render('quiz', {
-    questionsToFE
+    questionsToFE,
+    loggedIn: req.session.loggedIn
   });
 });
 
