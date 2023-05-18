@@ -49,7 +49,10 @@ header {
   color: var(--light);
 }
 
-
+main{
+  background:rgb(49, 17, 51, .6);
+ 
+}
 .main {
   font-family: Arial;
   width: 100%;
@@ -59,7 +62,9 @@ header {
   background-image: url("../images/artwork-fantasy-art-wizard-books-skull-hd-wallpaper-preview.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 90vh;
+  height: 100%;
+  min-height: 90vh;
+  
 }
 
 .main-content{
@@ -132,6 +137,7 @@ header {
   font-size: 15px;
   color: white;
   font-family: "Xefore-vp34";
+
 }
 
 .new-post-btn-section {
@@ -195,13 +201,14 @@ header {
   transition: color 0.1s;
   font-weight: bold;
   text-align: center;
-  font-family: “Xefore-vp34”;
+  font-family: "Xefore-vp34";
   background-color: hsl(296, 62%, 5%);
 }
 
 .logout-btn:hover {
   color: var(--secondary);
   background-color: var(--primary);
+  
 }
 
 .begin-quiz-btn {
@@ -221,4 +228,48 @@ font-size: 25px;
   background:rgb(49, 17, 51, .4);
   font-size: 26px;
   font-weight: bold;
+}
+.hidden{
+display: none;
+}
+.quiz-container{
+color: white;
+background:none
+
+}
+#quiz-form{
+padding-left: 10px;
+background: none;
+}
+.answer-choice{
+padding-left: 50px;
+font-size: 18px;
+background:none
+}
+.question-prompt{
+  padding-left: 10px;
+  font-size: 25px;
+  background:none
+  
+}
+.answer-label{
+  background:none
+}
+#score-container{
+color: white;
+background: none;
+display: flex;
+justify-content: center;
+}
+#score{
+  background: none;
+  font-size: 25px;
+font-weight: bold;
+
+}
+.btn-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
 }

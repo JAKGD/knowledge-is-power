@@ -1,16 +1,31 @@
-# knowledge-is-power
+# 🪄 Knowledge is power 🪄
 A geeky trivia game
 
-## User Story
+## Description
+Knowledge is power is an interactive multiple choice quiz app.
+## Table of Contents 
 
-```md
-AS A cultured geek
+
+* [User-Story](#User-Story)
+* [Screenshot](#Screenshot)
+* [Demo](#Demo)
+* [Usage](#Usage)
+* [Acceptance-Criteria]()
+* [Resources](#Resources)
+* [Questions](#Questions)
+* [Credits](#Questions)
+
+## User-Story
+AS a cultured geek
 I WANT a simple geek-themed trivia app
-SO THAT I can procrastinate and have fun in an ad-free environment
-```
+SO THAT I can procrastinate and have fun in an ad-free environment.
+
+## Screenshot
+![image](https://github.com/JAKGD/knowledge-is-power/assets/122762581/dacf583e-8d81-4cab-87d6-e40e1165141d)
+
+
 
 ## Acceptance Criteria
-
 ```md
 GIVEN a trivia site
 WHEN I visit the site for the first time
@@ -43,56 +58,28 @@ WHEN I answer the last question
 THEN I am shown a scoreboard displaying my final score, my high score, and the high scores of other players
 ```
 
-## Directory Structure
 
 
-```
-knowledge-is-power
-├─ .env
-├─ .gitignore
-├─ config
-│  └─ connection.js
-├─ controllers
-│  ├─ api
-│  │  ├─ answer-routes.js
-│  │  ├─ index.js
-│  │  ├─ question-routes.js
-│  │  └─ user-routes.js
-│  ├─ home-routes.js
-│  └─ index.js
-├─ db
-│  └─ schema.sql
-├─ LICENSE
-├─ models
-│  ├─ Answer.js
-│  ├─ index.js
-│  ├─ Question.js
-│  └─ User.js
-├─ node_modules
-├─ package-lock.json
-├─ package.json
-├─ public
-│  ├─ css
-│  │  └─ style.css
-│  └─ js
-│     ├─ login.js
-│     ├─ logout.js
-│     └─ start.js
-├─ README.md
-├─ seeds
-│  ├─ answerData.js
-│  ├─ index.js
-│  ├─ questionData.js
-│  └─ userData.js
-├─ server.js
-├─ utils
-│  ├─ auth.js
-│  └─ helpers.js
-└─ views
-   ├─ editpost.handlebars
-   ├─ homepage.handlebars
-   ├─ layouts
-   │  └─ main.handlebars
-   ├─ login.handlebars
-   └─ signup.handlebars
-```
+## Resources
+- [Best README Template](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
+- [console.table](https://www.npmjs.com/package/console.table)
+- [Inquirer](https://www.npmjs.com/package/inquirer)
+- [MySQL](https://www.mysql.com/)
+- [YouTube]()
+- [YouTube]()
+- [Shields.io - license badge](https://shields.io/)
+- [Emoji](https://emojipedia.org/)
+
+## Demo
+## ![Screenshot](./)
+
+## Usage
+A user starts using the app by loading the page and creating a log in. Once the log in is created, the user progresses through the multiple choice questions giving one of four answers. Users progress through the quiz until they reach the end with a final score.
+
+
+## Questions
+If you have any questions regarding this project, please don't hesitate to contact us.
+
+
+##  Credits 
+Kane Layng, Andres Mrio, Goldie Rizova, David Patzer, Jon Schuh

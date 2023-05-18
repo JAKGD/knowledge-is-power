@@ -1,21 +1,32 @@
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-      <button id="logout" class="logout-btn">Logout</button>
-    {{else}}
-      <a href="/login">Login</a>
-    {{/if}}
-  </nav>
+<header>
+  <h1>Quiz</h1>
+</header>
 
-  <header>
-    <h1>Quiz</h1>
-  </header>
-  
-  <main>
-    <div id="quiz"></div>
-    <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
-  </main>
-  
-  {{!-- <script src="../public/js/logout.js"></script>  --}}
-  {{!-- <script src="../public/js/quiz.js"></script> --}}
+<main>
+  {{#each questionsToFE as |question|}}
+  <div class="quiz-container">
+    <h2 class="question-prompt">{{question.dataValues.question_prompt}}</h2>
+
+    <form method="POST" id="quiz-form">
+      <input type="hidden" name="question_id" value="{{question.dataValues.id}}">
+      {{#each question.dataValues.answers}}
+      <div class="answer-choice">
+        <input class="option" type="radio" name="answer" id="{{this.dataValues.id}}"
+          value="{{this.dataValues.is_correct}}" required>
+        <label class="answer-label" for="{{this.dataValues.id}}">{{this.dataValues.answer_choice}}</label>
+      </div>
+      {{/each}}
+    </form>
+  </div>
+  {{/each}}
+  <div id="score-container">
+    <p id="score">Your Score: 0</p>
+  </div>
+  <div class="btn-container"><button class="button is-primary submit-answer-btn">Submit Answer</button></div>
+</main>
+
+<script src="../public/js/logout.js"></script>
+<script src="../public/js/quiz.js"></script>
+</body>
+
+</html>
