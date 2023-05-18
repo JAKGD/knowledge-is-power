@@ -61,8 +61,8 @@ THEN I am shown a scoreboard displaying my final score, my high score, and the h
 - [console.table](https://www.npmjs.com/package/console.table)
 - [Inquirer](https://www.npmjs.com/package/inquirer)
 - [MySQL](https://www.mysql.com/)
-- [YouTube]()
-- [YouTube]()
+- [YouTube](https://www.youtube.com/watch?v=FBPD-ZAeYmE&list=PL4zi3IBmicblqrhr8MIfXV1ZDzEIRyyFo&index=1&t=89s)
+- [YouTube](https://www.youtube.com/watch?v=AQp7b-1356k)
 - [Shields.io - license badge](https://shields.io/)
 - [Emoji](https://emojipedia.org/)
 
