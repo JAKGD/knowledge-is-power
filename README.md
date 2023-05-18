@@ -20,10 +20,6 @@ AS a cultured geek
 I WANT a simple geek-themed trivia app
 SO THAT I can procrastinate and have fun in an ad-free environment.
 
-## Screenshot
-![image](https://github.com/JAKGD/knowledge-is-power/assets/122762581/dacf583e-8d81-4cab-87d6-e40e1165141d)
-
-
 
 ## Acceptance Criteria
 ```md
@@ -71,7 +67,11 @@ THEN I am shown a scoreboard displaying my final score, my high score, and the h
 - [Emoji](https://emojipedia.org/)
 
 ## Demo
-## ![Screenshot](./)
+## ![Screenshot](./public/images/Screen%20Shot%202023-05-18%20at%206.19.18%20PM.png)
+## ![Screenshot](./public/images/Screen%20Shot%202023-05-18%20at%206.19.32%20PM.png)
+## ![Screenshot](./public/images/Screen%20Shot%202023-05-18%20at%206.19.43%20PM.png)
+## Video of the app [Here.](https://watch.screencastify.com/v/QyTKxd97HArS6H0m3gRE) 
+## You can check out our Deployed Heroku app [Here.](https://knowledge-is-power.herokuapp.com/login) 
 
 ## Usage
 A user starts using the app by loading the page and creating a log in. Once the log in is created, the user progresses through the multiple choice questions giving one of four answers. Users progress through the quiz until they reach the end with a final score.
